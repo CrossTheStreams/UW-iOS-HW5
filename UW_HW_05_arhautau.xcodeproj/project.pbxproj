@@ -9,11 +9,14 @@
 /* Begin PBXBuildFile section */
 		F94801BC1B01A2E500F30953 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F94801BB1B01A2E500F30953 /* main.m */; };
 		F94801BF1B01A2E500F30953 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F94801BE1B01A2E500F30953 /* AppDelegate.m */; };
-		F94801C21B01A2E500F30953 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F94801C11B01A2E500F30953 /* ViewController.m */; };
 		F94801C51B01A2E500F30953 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F94801C31B01A2E500F30953 /* Main.storyboard */; };
 		F94801C71B01A2E500F30953 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F94801C61B01A2E500F30953 /* Images.xcassets */; };
 		F94801CA1B01A2E500F30953 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F94801C81B01A2E500F30953 /* LaunchScreen.xib */; };
 		F94801D61B01A2E500F30953 /* UW_HW_05_arhautauTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F94801D51B01A2E500F30953 /* UW_HW_05_arhautauTests.m */; };
+		F94801E71B01BC4100F30953 /* PhotosListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F94801E61B01BC4100F30953 /* PhotosListViewController.m */; };
+		F94801F21B01D7E800F30953 /* mario.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F94801F11B01D7E800F30953 /* mario.jpg */; };
+		F948020D1B01DE0A00F30953 /* PhotoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F948020B1B01DE0A00F30953 /* PhotoCell.m */; };
+		F948020E1B01DE0A00F30953 /* PhotoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F948020C1B01DE0A00F30953 /* PhotoCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,14 +35,18 @@
 		F94801BB1B01A2E500F30953 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		F94801BD1B01A2E500F30953 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		F94801BE1B01A2E500F30953 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		F94801C01B01A2E500F30953 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		F94801C11B01A2E500F30953 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		F94801C41B01A2E500F30953 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F94801C61B01A2E500F30953 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		F94801C91B01A2E500F30953 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		F94801CF1B01A2E500F30953 /* UW_HW_05_arhautauTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UW_HW_05_arhautauTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F94801D41B01A2E500F30953 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F94801D51B01A2E500F30953 /* UW_HW_05_arhautauTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UW_HW_05_arhautauTests.m; sourceTree = "<group>"; };
+		F94801E51B01BC4100F30953 /* PhotosListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotosListViewController.h; sourceTree = "<group>"; };
+		F94801E61B01BC4100F30953 /* PhotosListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotosListViewController.m; sourceTree = "<group>"; };
+		F94801F11B01D7E800F30953 /* mario.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = mario.jpg; sourceTree = "<group>"; };
+		F948020A1B01DE0A00F30953 /* PhotoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoCell.h; sourceTree = "<group>"; };
+		F948020B1B01DE0A00F30953 /* PhotoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoCell.m; sourceTree = "<group>"; };
+		F948020C1B01DE0A00F30953 /* PhotoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,10 +88,13 @@
 		F94801B81B01A2E500F30953 /* UW_HW_05_arhautau */ = {
 			isa = PBXGroup;
 			children = (
+				F948020A1B01DE0A00F30953 /* PhotoCell.h */,
+				F948020B1B01DE0A00F30953 /* PhotoCell.m */,
+				F948020C1B01DE0A00F30953 /* PhotoCell.xib */,
+				F94801E51B01BC4100F30953 /* PhotosListViewController.h */,
+				F94801E61B01BC4100F30953 /* PhotosListViewController.m */,
 				F94801BD1B01A2E500F30953 /* AppDelegate.h */,
 				F94801BE1B01A2E500F30953 /* AppDelegate.m */,
-				F94801C01B01A2E500F30953 /* ViewController.h */,
-				F94801C11B01A2E500F30953 /* ViewController.m */,
 				F94801C31B01A2E500F30953 /* Main.storyboard */,
 				F94801C61B01A2E500F30953 /* Images.xcassets */,
 				F94801C81B01A2E500F30953 /* LaunchScreen.xib */,
@@ -96,6 +106,7 @@
 		F94801B91B01A2E500F30953 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				F94801F11B01D7E800F30953 /* mario.jpg */,
 				F94801BA1B01A2E500F30953 /* Info.plist */,
 				F94801BB1B01A2E500F30953 /* main.m */,
 			);
@@ -201,7 +212,9 @@
 			files = (
 				F94801C51B01A2E500F30953 /* Main.storyboard in Resources */,
 				F94801CA1B01A2E500F30953 /* LaunchScreen.xib in Resources */,
+				F94801F21B01D7E800F30953 /* mario.jpg in Resources */,
 				F94801C71B01A2E500F30953 /* Images.xcassets in Resources */,
+				F948020E1B01DE0A00F30953 /* PhotoCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -219,7 +232,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F94801C21B01A2E500F30953 /* ViewController.m in Sources */,
+				F948020D1B01DE0A00F30953 /* PhotoCell.m in Sources */,
+				F94801E71B01BC4100F30953 /* PhotosListViewController.m in Sources */,
 				F94801BF1B01A2E500F30953 /* AppDelegate.m in Sources */,
 				F94801BC1B01A2E500F30953 /* main.m in Sources */,
 			);
