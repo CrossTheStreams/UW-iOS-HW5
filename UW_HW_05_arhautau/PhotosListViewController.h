@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  PhotosListViewController.h
 //  UW_HW_05_arhautau
 //
 //  Created by Andrew Hautau on 5/11/15.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface PhotosListViewController : UICollectionViewController
 
 @end
-
