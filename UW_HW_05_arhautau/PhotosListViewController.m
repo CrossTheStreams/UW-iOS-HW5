@@ -30,10 +30,10 @@
     
     NSString *thePath = [[NSBundle mainBundle] pathForResource:@"mario" ofType:@"jpg"];
     UIImage *img = [[UIImage alloc] initWithContentsOfFile: thePath];
-    UIImageView *imgView = [[UIImageView alloc] initWithFrame: CGRectMake(10, 10, cell.bounds.size.width, cell.bounds.size.height)];
-    [imgView setImage: img];
     
-    [cell setPhoto:imgView];
+    [cell.photo setImage: img];
+    
+    
     
     return cell;
 }
