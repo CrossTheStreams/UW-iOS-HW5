@@ -9,6 +9,11 @@
 #import "PhotosListViewController.h"
 #import "PhotoCell.h"
 
+@interface PhotosListViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UIImagePickerControllerDelegate>
+
+@end
+
+
 @implementation PhotosListViewController
 
 -(void) viewDidLoad {
@@ -49,5 +54,49 @@
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
 
 }
+
+# pragma mark IBActions
+- (IBAction)tappedCameraButton:(id)sender {
+    
+    UIAlertController* alert = [UIAlertController alertControllerWithTitle: nil
+                                                                   message: nil
+                                                            preferredStyle:UIAlertControllerStyleActionSheet];
+    
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+        UIAlertAction* cameraAction = [UIAlertAction actionWithTitle:@"Camera" style: UIAlertActionStyleDefault
+                                                            handler:^(UIAlertAction *action) {
+                                                                
+                                                            }];
+        [alert addAction: cameraAction];
+    }
+    
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary]) {
+        UIAlertAction* photoLibraryAction = [UIAlertAction actionWithTitle:@"Photo Library" style:UIAlertActionStyleDefault
+                                                             handler:^(UIAlertAction *action) {
+                                                                 
+                                                             }];
+        [alert addAction: photoLibraryAction];
+    }
+    
+
+    UIAlertAction* cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault
+                                                         handler:nil];
+    
+    [alert addAction:cancelAction];
+    
+    [self presentViewController:alert animated:YES completion:nil];
+
+    
+}
+
+-(void) presentCamera {
+
+
+}
+
+-(void) presentPhotoLibrary {
+
+}
+
 
 @end

@@ -35,7 +35,11 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" id="lGh-fg-vEG">
-                        <barButtonItem key="rightBarButtonItem" systemItem="camera" id="bRN-Ph-SdI"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="camera" id="bRN-Ph-SdI">
+                            <connections>
+                                <action selector="tappedCameraButton:" destination="w5f-2t-y0c" id="4Ug-XY-det"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ret-FN-phV" userLabel="First Responder" sceneMemberID="firstResponder"/>

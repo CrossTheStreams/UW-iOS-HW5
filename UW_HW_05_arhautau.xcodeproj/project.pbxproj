@@ -17,6 +17,8 @@
 		F94801F21B01D7E800F30953 /* mario.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F94801F11B01D7E800F30953 /* mario.jpg */; };
 		F948020D1B01DE0A00F30953 /* PhotoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F948020B1B01DE0A00F30953 /* PhotoCell.m */; };
 		F948020E1B01DE0A00F30953 /* PhotoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F948020C1B01DE0A00F30953 /* PhotoCell.xib */; };
+		F974A4FF1B097A3F00E2C27F /* CheckInCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = F974A4FE1B097A3F00E2C27F /* CheckInCollection.m */; };
+		F974A5021B097A6700E2C27F /* CheckIn.m in Sources */ = {isa = PBXBuildFile; fileRef = F974A5011B097A6700E2C27F /* CheckIn.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +49,10 @@
 		F948020A1B01DE0A00F30953 /* PhotoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoCell.h; sourceTree = "<group>"; };
 		F948020B1B01DE0A00F30953 /* PhotoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoCell.m; sourceTree = "<group>"; };
 		F948020C1B01DE0A00F30953 /* PhotoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoCell.xib; sourceTree = "<group>"; };
+		F974A4FD1B097A3F00E2C27F /* CheckInCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckInCollection.h; sourceTree = "<group>"; };
+		F974A4FE1B097A3F00E2C27F /* CheckInCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckInCollection.m; sourceTree = "<group>"; };
+		F974A5001B097A6700E2C27F /* CheckIn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckIn.h; sourceTree = "<group>"; };
+		F974A5011B097A6700E2C27F /* CheckIn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckIn.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +98,10 @@
 				F948020B1B01DE0A00F30953 /* PhotoCell.m */,
 				F948020C1B01DE0A00F30953 /* PhotoCell.xib */,
 				F94801E51B01BC4100F30953 /* PhotosListViewController.h */,
+				F974A4FD1B097A3F00E2C27F /* CheckInCollection.h */,
+				F974A4FE1B097A3F00E2C27F /* CheckInCollection.m */,
+				F974A5001B097A6700E2C27F /* CheckIn.h */,
+				F974A5011B097A6700E2C27F /* CheckIn.m */,
 				F94801E61B01BC4100F30953 /* PhotosListViewController.m */,
 				F94801BD1B01A2E500F30953 /* AppDelegate.h */,
 				F94801BE1B01A2E500F30953 /* AppDelegate.m */,
@@ -232,6 +242,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F974A4FF1B097A3F00E2C27F /* CheckInCollection.m in Sources */,
+				F974A5021B097A6700E2C27F /* CheckIn.m in Sources */,
 				F948020D1B01DE0A00F30953 /* PhotoCell.m in Sources */,
 				F94801E71B01BC4100F30953 /* PhotosListViewController.m in Sources */,
 				F94801BF1B01A2E500F30953 /* AppDelegate.m in Sources */,
@@ -432,6 +444,7 @@
 				F94801DB1B01A2E500F30953 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F94801DC1B01A2E500F30953 /* Build configuration list for PBXNativeTarget "UW_HW_05_arhautauTests" */ = {
 			isa = XCConfigurationList;
@@ -440,6 +453,7 @@
 				F94801DE1B01A2E500F30953 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
