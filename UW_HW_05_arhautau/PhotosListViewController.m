@@ -20,6 +20,7 @@
     [super viewDidLoad];
     UINib *nib = [UINib nibWithNibName:@"PhotoCell" bundle:nil];
     [self.collectionView registerNib: nib forCellWithReuseIdentifier:@"PhotoCell"];
+    
 }
 
 - (UICollectionViewCell*) collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -114,22 +115,22 @@
 }
 
 -(void) presentPhotoLibrary {
-    UIImagePickerController *cameraUI = [[UIImagePickerController alloc] init];
-    cameraUI.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    UIImagePickerController *photoLibrary = [[UIImagePickerController alloc] init];
+    photoLibrary .sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
     
     // Displays a control that allows the user to choose picture or
     // movie capture, if both are available:
-    cameraUI.mediaTypes =
+    photoLibrary.mediaTypes =
     [UIImagePickerController availableMediaTypesForSourceType:
      UIImagePickerControllerSourceTypePhotoLibrary];
     
     // Hides the controls for moving & scaling pictures, or for
     // trimming movies. To instead show the controls, use YES.
-    cameraUI.allowsEditing = NO;
+    photoLibrary.allowsEditing = NO;
     
-    cameraUI.delegate = self;
+    photoLibrary.delegate = self;
     
-    [self presentViewController:cameraUI animated:YES completion:^{
+    [self presentViewController:photoLibrary animated:YES completion:^{
         //
     }];
 }
@@ -137,8 +138,36 @@
 - (void)imagePickerController:(UIImagePickerController *)picker
 didFinishPickingMediaWithInfo:(NSDictionary *)info {
     
-    NSLog(@"%@",info);
+    UIImage *originalImage = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
+    NSData *pngData = UIImagePNGRepresentation(originalImage);
     
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    // Get the docs directory
+    NSString *documentsPath = [paths objectAtIndex:0];
+    // Add the file name
+    NSString *filePath = [documentsPath stringByAppendingPathComponent: [[[NSUUID UUID] UUIDString] stringByAppendingString:@".png"]];
+    // Write the file
+    
+    NSArray *directoryContent = [[NSFileManager defaultManager] directoryContentsAtPath: documentsPath];
+    
+    NSLog(@"%@",directoryContent);
+    
+//   delete all files in documents folder
+//    for (NSString *path in directoryContent) {
+//        NSError *error;
+//        NSString *fullPath = [[documentsPath stringByAppendingString: @"/"] stringByAppendingString: path];
+//        BOOL success = [[NSFileManager defaultManager] removeItemAtPath: fullPath error: &error];
+//        if (!success) {
+//            NSLog(@"%@",error);
+//        }
+//    }
+    
+    [pngData writeToFile:filePath atomically:YES];
+    
+    [self dismissViewControllerAnimated:YES completion:^{
+        //
+    }];
+
     
 }
 
