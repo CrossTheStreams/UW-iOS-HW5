@@ -8,18 +8,23 @@
 
 #import "PhotosListViewController.h"
 #import "PhotoCell.h"
+#import "CheckIn.h"
 
-@interface PhotosListViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@interface PhotosListViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UIImagePickerControllerDelegate>
 
 @end
 
 
-@implementation PhotosListViewController
+@implementation PhotosListViewController {
+    CheckIn *_checkIn;
+}
 
 -(void) viewDidLoad {
+    
     [super viewDidLoad];
     UINib *nib = [UINib nibWithNibName:@"PhotoCell" bundle:nil];
     [self.collectionView registerNib: nib forCellWithReuseIdentifier:@"PhotoCell"];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(archiveCheckIn) name:@"appResigningActive" object:nil];
     
 }
 
@@ -31,21 +36,27 @@
         NSArray *nibObjects = [[NSBundle mainBundle] loadNibNamed:cellID owner:self options:nil];
         cell = (PhotoCell *) [nibObjects firstObject];
     }
-    UILabel *label = [[UILabel alloc] initWithFrame: CGRectMake(10, 10, cell.bounds.size.width, 40)];
-    [label setText:@"foo"];
+    NSUInteger index = [indexPath row];
+    UIImage *img;
     
-    NSString *thePath = [[NSBundle mainBundle] pathForResource:@"mario" ofType:@"jpg"];
-    UIImage *img = [[UIImage alloc] initWithContentsOfFile: thePath];
-    
+    if ([indexPath row] >= 2) {
+        NSArray *checkInPhotos = [[self checkIn] photos];
+        NSString *checkInPhotoPath = [checkInPhotos objectAtIndex: index - 2];
+        img = [[UIImage alloc] initWithContentsOfFile: checkInPhotoPath];
+    } else {
+        NSString *marioPath = [[NSBundle mainBundle] pathForResource:@"mario" ofType:@"jpg"];
+        img = [[UIImage alloc] initWithContentsOfFile: marioPath];
+    }
+
     [cell.photo setImage: img];
-    
-    
-    
+
     return cell;
 }
 
 -(NSInteger) collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 2;
+    NSUInteger checkInPhotosCount = [[[self checkIn] photos] count];
+    
+    return 2 + checkInPhotosCount;
 }
 
 -(BOOL) collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -140,19 +151,17 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info {
     
     UIImage *originalImage = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
     NSData *pngData = UIImagePNGRepresentation(originalImage);
-    
+     
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     // Get the docs directory
     NSString *documentsPath = [paths objectAtIndex:0];
     // Add the file name
     NSString *filePath = [documentsPath stringByAppendingPathComponent: [[[NSUUID UUID] UUIDString] stringByAppendingString:@".png"]];
-    // Write the file
     
     NSArray *directoryContent = [[NSFileManager defaultManager] directoryContentsAtPath: documentsPath];
+    NSLog(@"%@", directoryContent);
     
-    NSLog(@"%@",directoryContent);
-    
-//   delete all files in documents folder
+   //delete all files in documents folder
 //    for (NSString *path in directoryContent) {
 //        NSError *error;
 //        NSString *fullPath = [[documentsPath stringByAppendingString: @"/"] stringByAppendingString: path];
@@ -161,14 +170,46 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info {
 //            NSLog(@"%@",error);
 //        }
 //    }
+//    
+    // Write the file
+    [pngData writeToFile: filePath atomically:YES];
     
-    [pngData writeToFile:filePath atomically:YES];
+    [[[self checkIn] photos] addObject: filePath];
     
     [self dismissViewControllerAnimated:YES completion:^{
-        //
+        [self.collectionView reloadData];
     }];
 
     
+}
+
+-(CheckIn*) checkIn {
+    
+    
+    if (![_checkIn isKindOfClass: [CheckIn class]]) {
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        // Get the docs directory
+        NSString *documentsPath = [paths objectAtIndex:0];
+        // Add the file name
+        NSString *checkInPath = [documentsPath stringByAppendingPathComponent: @"CheckIn"];
+        
+        CheckIn *checkIn = [NSKeyedUnarchiver unarchiveObjectWithFile: checkInPath];
+        
+        if (checkIn) {
+            _checkIn = checkIn;
+        } else {
+            _checkIn = [CheckIn createCheckIn];
+        }
+    }
+    
+    return  _checkIn;
+}
+
+-(void) archiveCheckIn {
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsPath = [paths objectAtIndex:0];
+    NSString *checkInPath = [documentsPath stringByAppendingPathComponent: @"CheckIn"];
+    [NSKeyedArchiver archiveRootObject: [self checkIn] toFile: checkInPath];
 }
 
 

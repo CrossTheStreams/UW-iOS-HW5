@@ -8,10 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
-// photos NSMutableArray of image paths
-// location 
-// name
+// location ??
+// name ??
 
-@interface CheckIn : NSObject //<NSSecureCoding>
+@interface CheckIn : NSObject <NSSecureCoding>
+
+@property (strong, nonatomic) NSMutableArray *photos;
+
++ (instancetype) createCheckIn;
+
 
 @end
