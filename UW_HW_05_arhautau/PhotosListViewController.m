@@ -159,7 +159,6 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info {
     NSString *filePath = [documentsPath stringByAppendingPathComponent: [[[NSUUID UUID] UUIDString] stringByAppendingString:@".png"]];
     
     NSArray *directoryContent = [[NSFileManager defaultManager] directoryContentsAtPath: documentsPath];
-    NSLog(@"%@", directoryContent);
     
    //delete all files in documents folder
 //    for (NSString *path in directoryContent) {
@@ -177,14 +176,19 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info {
     [[[self checkIn] photos] addObject: filePath];
     
     [self dismissViewControllerAnimated:YES completion:^{
-        [self.collectionView reloadData];
+  //      [self.collectionView reloadData];
+       
+        [self.collectionView performBatchUpdates:^{
+            NSIndexPath *indexPath = [NSIndexPath indexPathForItem: ([[[self checkIn] photos] count] + 1) inSection:0];
+            [self.collectionView insertItemsAtIndexPaths:@[indexPath]];
+        } completion: nil];
+        
     }];
 
     
 }
 
 -(CheckIn*) checkIn {
-    
     
     if (![_checkIn isKindOfClass: [CheckIn class]]) {
         NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
