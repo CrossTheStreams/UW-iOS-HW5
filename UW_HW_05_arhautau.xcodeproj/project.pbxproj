@@ -19,6 +19,9 @@
 		F948020E1B01DE0A00F30953 /* PhotoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F948020C1B01DE0A00F30953 /* PhotoCell.xib */; };
 		F974A4FF1B097A3F00E2C27F /* CheckInCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = F974A4FE1B097A3F00E2C27F /* CheckInCollection.m */; };
 		F974A5021B097A6700E2C27F /* CheckIn.m in Sources */ = {isa = PBXBuildFile; fileRef = F974A5011B097A6700E2C27F /* CheckIn.m */; };
+		F974A5071B14525400E2C27F /* CheckInListController.m in Sources */ = {isa = PBXBuildFile; fileRef = F974A5061B14525400E2C27F /* CheckInListController.m */; };
+		F974A50D1B1456ED00E2C27F /* CheckInCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F974A50B1B1456ED00E2C27F /* CheckInCell.m */; };
+		F974A50E1B1456ED00E2C27F /* CheckInCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F974A50C1B1456ED00E2C27F /* CheckInCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +56,11 @@
 		F974A4FE1B097A3F00E2C27F /* CheckInCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckInCollection.m; sourceTree = "<group>"; };
 		F974A5001B097A6700E2C27F /* CheckIn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckIn.h; sourceTree = "<group>"; };
 		F974A5011B097A6700E2C27F /* CheckIn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckIn.m; sourceTree = "<group>"; };
+		F974A5051B14525400E2C27F /* CheckInListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckInListController.h; sourceTree = "<group>"; };
+		F974A5061B14525400E2C27F /* CheckInListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckInListController.m; sourceTree = "<group>"; };
+		F974A50A1B1456ED00E2C27F /* CheckInCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CheckInCell.h; path = ../CheckInCell.h; sourceTree = "<group>"; };
+		F974A50B1B1456ED00E2C27F /* CheckInCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CheckInCell.m; path = ../CheckInCell.m; sourceTree = "<group>"; };
+		F974A50C1B1456ED00E2C27F /* CheckInCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CheckInCell.xib; path = ../CheckInCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,11 +102,16 @@
 		F94801B81B01A2E500F30953 /* UW_HW_05_arhautau */ = {
 			isa = PBXGroup;
 			children = (
+				F974A50A1B1456ED00E2C27F /* CheckInCell.h */,
+				F974A50B1B1456ED00E2C27F /* CheckInCell.m */,
+				F974A50C1B1456ED00E2C27F /* CheckInCell.xib */,
 				F948020A1B01DE0A00F30953 /* PhotoCell.h */,
 				F948020B1B01DE0A00F30953 /* PhotoCell.m */,
 				F948020C1B01DE0A00F30953 /* PhotoCell.xib */,
 				F94801E51B01BC4100F30953 /* PhotosListViewController.h */,
 				F94801E61B01BC4100F30953 /* PhotosListViewController.m */,
+				F974A5051B14525400E2C27F /* CheckInListController.h */,
+				F974A5061B14525400E2C27F /* CheckInListController.m */,
 				F974A4FD1B097A3F00E2C27F /* CheckInCollection.h */,
 				F974A4FE1B097A3F00E2C27F /* CheckInCollection.m */,
 				F974A5001B097A6700E2C27F /* CheckIn.h */,
@@ -223,6 +236,7 @@
 				F94801C51B01A2E500F30953 /* Main.storyboard in Resources */,
 				F94801CA1B01A2E500F30953 /* LaunchScreen.xib in Resources */,
 				F94801F21B01D7E800F30953 /* mario.jpg in Resources */,
+				F974A50E1B1456ED00E2C27F /* CheckInCell.xib in Resources */,
 				F94801C71B01A2E500F30953 /* Images.xcassets in Resources */,
 				F948020E1B01DE0A00F30953 /* PhotoCell.xib in Resources */,
 			);
@@ -247,6 +261,8 @@
 				F948020D1B01DE0A00F30953 /* PhotoCell.m in Sources */,
 				F94801E71B01BC4100F30953 /* PhotosListViewController.m in Sources */,
 				F94801BF1B01A2E500F30953 /* AppDelegate.m in Sources */,
+				F974A50D1B1456ED00E2C27F /* CheckInCell.m in Sources */,
+				F974A5071B14525400E2C27F /* CheckInListController.m in Sources */,
 				F94801BC1B01A2E500F30953 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

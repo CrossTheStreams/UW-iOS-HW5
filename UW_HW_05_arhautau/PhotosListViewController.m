@@ -68,6 +68,7 @@
 }
 
 # pragma mark IBActions
+
 - (IBAction)tappedCameraButton:(id)sender {
     
     UIAlertController* alert = [UIAlertController alertControllerWithTitle: nil
@@ -103,6 +104,8 @@
 
     
 }
+
+# pragma mark Present Photo Library
 
 -(void) presentCamera {
     UIImagePickerController *cameraUI = [[UIImagePickerController alloc] init];
@@ -145,6 +148,8 @@
         //
     }];
 }
+
+# pragma mark Callback after picking photo
 
 - (void)imagePickerController:(UIImagePickerController *)picker
 didFinishPickingMediaWithInfo:(NSDictionary *)info {
