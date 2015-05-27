@@ -18,8 +18,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self.tableView registerClass: [CheckInCell class] forCellReuseIdentifier:@"CheckInCell"];
-    
+    // Apparently, I had to do this in order to use a xib file?
+    [self.tableView registerNib:[UINib nibWithNibName:@"CheckInCell" bundle:nil] forCellReuseIdentifier:@"CheckInCell"];
+
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -51,7 +52,7 @@
     
     
     CheckInCell *cell = [tableView dequeueReusableCellWithIdentifier: @"CheckInCell" forIndexPath:indexPath];
-    [cell.checkInLabel setText:@"fooey"];
+    [cell.checkInLabel setText:@"foo bar"];
 
     return cell;
 }
