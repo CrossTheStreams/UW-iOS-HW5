@@ -8,6 +8,7 @@
 
 #import "CheckInListController.h"
 #import "CheckInCell.h"
+#import "MapController.h"
 
 @interface CheckInListController ()
 
@@ -55,6 +56,11 @@
     [cell.checkInLabel setText:@"foo bar"];
 
     return cell;
+}
+- (IBAction)addCheckInButtonTapped:(id)sender {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    MapController *mapVC = [storyboard instantiateViewControllerWithIdentifier:@"MapController"];
+    [[self navigationController] pushViewController: mapVC animated:YES];
 }
 
 
