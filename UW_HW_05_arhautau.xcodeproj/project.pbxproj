@@ -29,6 +29,7 @@
 		F974A5251B16DDF300E2C27F /* SearchBarCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F974A5231B16DDF300E2C27F /* SearchBarCell.xib */; };
 		F974A5291B16DE0300E2C27F /* MapViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F974A5271B16DE0300E2C27F /* MapViewCell.m */; };
 		F974A52A1B16DE0300E2C27F /* MapViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F974A5281B16DE0300E2C27F /* MapViewCell.xib */; };
+		F974A52D1B16F9EC00E2C27F /* CustomAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = F974A52C1B16F9EC00E2C27F /* CustomAnnotation.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +79,8 @@
 		F974A5261B16DE0300E2C27F /* MapViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewCell.h; sourceTree = "<group>"; };
 		F974A5271B16DE0300E2C27F /* MapViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewCell.m; sourceTree = "<group>"; };
 		F974A5281B16DE0300E2C27F /* MapViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MapViewCell.xib; sourceTree = "<group>"; };
+		F974A52B1B16F9EC00E2C27F /* CustomAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomAnnotation.h; sourceTree = "<group>"; };
+		F974A52C1B16F9EC00E2C27F /* CustomAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomAnnotation.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +145,8 @@
 				F94801C31B01A2E500F30953 /* Main.storyboard */,
 				F974A51A1B15AA6500E2C27F /* MapController.h */,
 				F974A51B1B15AA6500E2C27F /* MapController.m */,
+				F974A52B1B16F9EC00E2C27F /* CustomAnnotation.h */,
+				F974A52C1B16F9EC00E2C27F /* CustomAnnotation.m */,
 				F94801C61B01A2E500F30953 /* Images.xcassets */,
 				F94801C81B01A2E500F30953 /* LaunchScreen.xib */,
 				F94801B91B01A2E500F30953 /* Supporting Files */,
@@ -290,6 +295,7 @@
 				F974A4FF1B097A3F00E2C27F /* CheckInCollection.m in Sources */,
 				F974A5021B097A6700E2C27F /* CheckIn.m in Sources */,
 				F948020D1B01DE0A00F30953 /* PhotoCell.m in Sources */,
+				F974A52D1B16F9EC00E2C27F /* CustomAnnotation.m in Sources */,
 				F94801E71B01BC4100F30953 /* PhotosListViewController.m in Sources */,
 				F94801BF1B01A2E500F30953 /* AppDelegate.m in Sources */,
 				F974A5291B16DE0300E2C27F /* MapViewCell.m in Sources */,

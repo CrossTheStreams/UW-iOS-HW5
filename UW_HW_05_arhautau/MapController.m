@@ -88,6 +88,34 @@
 }
 
 
+
+- (MKAnnotationView *)mapView:(MKMapView *)theMapView viewForAnnotation:(id <MKAnnotation>)annotation
+{
+    // Try to dequeue an existing pin view first (code not shown).
+    MKPinAnnotationView*  customPinView = (MKPinAnnotationView*)[self.mapView
+                                                             dequeueReusableAnnotationViewWithIdentifier:@"PinAnnotationView"];
+    if (!customPinView) {
+        // If no pin view already exists, create a new one.
+        customPinView = [[MKPinAnnotationView alloc]
+                                              initWithAnnotation: annotation reuseIdentifier:@"PinAnnotationView"];
+        customPinView.canShowCallout = YES;
+        // Button
+        UILabel *label = [[UILabel alloc] init];
+        label.frame = CGRectMake(0, 0, 80, 44);
+        [label setText:@"Check-In"];
+        [label setTextColor: [UIColor blueColor]];
+        customPinView.rightCalloutAccessoryView = label;
+        
+
+        
+    }
+
+    return customPinView;
+}
+
+
+
+
 -(CGFloat) tableView:(UITableView*) tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSUInteger height = 44;
     if ([indexPath row] == 1) {
@@ -119,6 +147,7 @@
     if ([indexPath row] == 1) {
         NSArray *nibObjects = [[NSBundle mainBundle] loadNibNamed: mapViewID owner:self options:nil];
         cell = (MapViewCell *) [nibObjects firstObject];
+        [cell setSelectionStyle: UITableViewCellSelectionStyleNone];
         MKMapView *mapView = [[[cell contentView] subviews] firstObject];
         self.mapView = mapView;
         // set our mapView delegate
