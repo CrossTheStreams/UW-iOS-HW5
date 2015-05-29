@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		49F0EF1E1B184F67001DE165 /* MapAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 49F0EF1D1B184F67001DE165 /* MapAnnotation.m */; };
 		F94801BC1B01A2E500F30953 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F94801BB1B01A2E500F30953 /* main.m */; };
 		F94801BF1B01A2E500F30953 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F94801BE1B01A2E500F30953 /* AppDelegate.m */; };
 		F94801C51B01A2E500F30953 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F94801C31B01A2E500F30953 /* Main.storyboard */; };
@@ -43,6 +44,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		49F0EF1C1B184F67001DE165 /* MapAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapAnnotation.h; sourceTree = "<group>"; };
+		49F0EF1D1B184F67001DE165 /* MapAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapAnnotation.m; sourceTree = "<group>"; };
 		F94801B61B01A2E500F30953 /* UW_HW_05_arhautau.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UW_HW_05_arhautau.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F94801BA1B01A2E500F30953 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F94801BB1B01A2E500F30953 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -126,6 +129,8 @@
 		F94801B81B01A2E500F30953 /* UW_HW_05_arhautau */ = {
 			isa = PBXGroup;
 			children = (
+				49F0EF1C1B184F67001DE165 /* MapAnnotation.h */,
+				49F0EF1D1B184F67001DE165 /* MapAnnotation.m */,
 				F974A5151B15A41F00E2C27F /* CheckInCell.h */,
 				F974A5161B15A41F00E2C27F /* CheckInCell.m */,
 				F974A5171B15A41F00E2C27F /* CheckInCell.xib */,
@@ -293,6 +298,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F974A4FF1B097A3F00E2C27F /* CheckInCollection.m in Sources */,
+				49F0EF1E1B184F67001DE165 /* MapAnnotation.m in Sources */,
 				F974A5021B097A6700E2C27F /* CheckIn.m in Sources */,
 				F948020D1B01DE0A00F30953 /* PhotoCell.m in Sources */,
 				F974A52D1B16F9EC00E2C27F /* CustomAnnotation.m in Sources */,

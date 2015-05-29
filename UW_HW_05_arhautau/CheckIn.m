@@ -15,7 +15,7 @@
 
 @implementation CheckIn
 
-+ (instancetype) createCheckIn {
++ (instancetype) createCheckInWithMapAnnotation: (MapAnnotation*) mapAnnotation {
     CheckIn *checkIn = [[CheckIn alloc] init];
     checkIn.photos = [[NSMutableArray alloc] init];
     return checkIn;

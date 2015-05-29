@@ -10,6 +10,7 @@
 #import <MapKit/MapKit.h>
 #import "MapViewCell.h"
 #import "SearchBarCell.h"
+#import "MapAnnotation.h"
 
 @interface MapController () <CLLocationManagerDelegate, MKMapViewDelegate, UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate>
 
@@ -49,6 +50,8 @@
     // Dispose of any resources that can be recreated.
 }
 
+# pragma mark CLLocationManagerDelegate methods
+
 -(void) locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
     if (status == kCLAuthorizationStatusAuthorizedWhenInUse) {
         [self.locationManager startUpdatingLocation];
@@ -62,10 +65,56 @@
     
 }
 
+# pragma mark MKMapViewDelegate methods
+
 -(void) mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation {
     // set the mapView's region to the user's location manually
-    // [mapView setRegion: MKCoordinateRegionMakeWithDistance(userLocation.coordinate, 10, 10) animated: YES];
+    [mapView setRegion: MKCoordinateRegionMakeWithDistance(userLocation.coordinate, 10, 10) animated: YES];
 }
+
+- (MKAnnotationView *)mapView:(MKMapView *)theMapView viewForAnnotation:(id <MKAnnotation>)annotation
+{
+    // check that annotation is not the user location
+    if ([annotation isEqual: [self.mapView userLocation]]) {
+        return nil;
+    }
+
+    MKPinAnnotationView*  customPinView = (MKPinAnnotationView*)[self.mapView dequeueReusableAnnotationViewWithIdentifier:@"PinAnnotationView"];
+    if (!customPinView) {
+        // If no pin view already exists, create a new one.
+        customPinView = [[MKPinAnnotationView alloc]
+                         initWithAnnotation: annotation reuseIdentifier:@"PinAnnotationView"];
+        customPinView.canShowCallout = YES;
+        
+        // Button
+        UIButton *button = [UIButton buttonWithType: UIButtonTypeSystem];
+        button.frame = CGRectMake(0, 0, 80, customPinView.frame.size.height);
+        [button setTitle:@"Check-In" forState:UIControlStateNormal];
+        customPinView.rightCalloutAccessoryView = button;
+        
+    }
+    
+    return customPinView;
+}
+
+- (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control
+{
+    
+    MapAnnotation *annotation = view.annotation;
+    UINavigationController *nav = [self navigationController];
+    UINavigationController * parentNav = (UINavigationController *) [nav parentViewController];
+    
+    
+    
+    [parentNav popToRootViewControllerAnimated:YES];
+    
+//    [[nav parentViewController] dismissViewControllerAnimated:YES completion:^{
+//        
+//    }];
+}
+
+
+# pragma mark UISearchBarDelegate methods
 
 -(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
     MKLocalSearchRequest *searchRequest = [[MKLocalSearchRequest alloc] init];
@@ -78,42 +127,19 @@
         self.localSearch = nil;
     }
     
+    
     self.localSearch = [[MKLocalSearch alloc] initWithRequest:searchRequest];
     [self.localSearch startWithCompletionHandler:^(MKLocalSearchResponse *response, NSError *error) {
         for (MKMapItem*mapItem in response.mapItems) {
-            [self.mapView addAnnotation: mapItem.placemark];
+            MapAnnotation *annotation = [[MapAnnotation alloc] initWithMapItem:mapItem];
+            [self.mapView addAnnotation: annotation];
         }
     }];
     
 }
 
 
-
-- (MKAnnotationView *)mapView:(MKMapView *)theMapView viewForAnnotation:(id <MKAnnotation>)annotation
-{
-    // Try to dequeue an existing pin view first (code not shown).
-    MKPinAnnotationView*  customPinView = (MKPinAnnotationView*)[self.mapView
-                                                             dequeueReusableAnnotationViewWithIdentifier:@"PinAnnotationView"];
-    if (!customPinView) {
-        // If no pin view already exists, create a new one.
-        customPinView = [[MKPinAnnotationView alloc]
-                                              initWithAnnotation: annotation reuseIdentifier:@"PinAnnotationView"];
-        customPinView.canShowCallout = YES;
-        // Button
-        UILabel *label = [[UILabel alloc] init];
-        label.frame = CGRectMake(0, 0, 80, 44);
-        [label setText:@"Check-In"];
-        [label setTextColor: [UIColor blueColor]];
-        customPinView.rightCalloutAccessoryView = label;
-        
-
-        
-    }
-
-    return customPinView;
-}
-
-
+# pragma mark UITableViewDelegate methods
 
 
 -(CGFloat) tableView:(UITableView*) tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -129,6 +155,8 @@
     
     return 100;
 }
+
+# pragma mark UITableViewDataSource methods
 
 -(UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *mapViewID= @"MapViewCell";
@@ -152,7 +180,7 @@
         self.mapView = mapView;
         // set our mapView delegate
         [self.mapView setDelegate:self];
-        [self.mapView setUserTrackingMode:MKUserTrackingModeFollow];
+        //[self.mapView setUserTrackingMode:MKUserTrackingModeFollow];
     }
     
     return cell;

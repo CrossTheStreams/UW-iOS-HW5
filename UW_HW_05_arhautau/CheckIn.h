@@ -7,15 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
-
-// location ??
-// name ??
+#import "MapAnnotation.h"
 
 @interface CheckIn : NSObject <NSSecureCoding>
 
 @property (strong, nonatomic) NSMutableArray *photos;
 
-+ (instancetype) createCheckIn;
++ (instancetype) createCheckInWithMapAnnotation: (MapAnnotation*) mapAnnotation ;
 
 
 @end
