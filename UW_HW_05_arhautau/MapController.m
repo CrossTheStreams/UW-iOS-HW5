@@ -11,15 +11,16 @@
 #import "MapViewCell.h"
 #import "SearchBarCell.h"
 #import "MapAnnotation.h"
+#import "CheckIn.h"
 
 @interface MapController () <CLLocationManagerDelegate, MKMapViewDelegate, UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate>
 
 @property (strong, nonatomic) CLLocationManager *locationManager;
-
-@property (strong, nonatomic) IBOutlet MKMapView *mapView;
-@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
-
+@property (weak, nonatomic) MKMapView *mapView;
 @property (strong, nonatomic) MKLocalSearch *localSearch;
+@property (weak, nonatomic) UISearchBar *searchBar;
+
+
 
 @end
 
@@ -103,14 +104,27 @@
     MapAnnotation *annotation = view.annotation;
     UINavigationController *nav = [self navigationController];
     UINavigationController * parentNav = (UINavigationController *) [nav parentViewController];
+    CheckIn *checkIn = [CheckIn createCheckInWithMapAnnotation: annotation];
+    // set strong references to nil
+    [self setLocalSearch: nil];
+    [self setLocationManager:nil];
     
+    // NOTE: dismissing a pushed view controller with a completion block
+    // http://stackoverflow.com/questions/12904410/completion-block-for-popviewcontroller
     
+    [CATransaction begin];
+    [CATransaction setCompletionBlock:^{
+        // add a check-in
+        // post notification to archive check-in collection
+        // will add the check in and update the table view
+        [[NSNotificationCenter defaultCenter] postNotificationName: @"addCheckIn" object: self userInfo:@{@"CheckIn" : checkIn}];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"archiveCollection" object:self];
+    }];
     
-    [parentNav popToRootViewControllerAnimated:YES];
+    [self.navigationController popViewControllerAnimated:YES];
     
-//    [[nav parentViewController] dismissViewControllerAnimated:YES completion:^{
-//        
-//    }];
+    [CATransaction commit];
+    
 }
 
 
@@ -180,7 +194,7 @@
         self.mapView = mapView;
         // set our mapView delegate
         [self.mapView setDelegate:self];
-        //[self.mapView setUserTrackingMode:MKUserTrackingModeFollow];
+        [self.mapView setUserTrackingMode:MKUserTrackingModeFollow];
     }
     
     return cell;

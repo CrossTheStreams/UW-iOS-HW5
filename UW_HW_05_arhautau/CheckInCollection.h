@@ -7,9 +7,18 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "CheckIn.h"
 
 @interface CheckInCollection : NSObject <NSSecureCoding>
 
++ (CheckInCollection*) createCheckInCollection;
 
+- (CheckIn*) checkInForRow: (NSUInteger) row;
+
+-(NSInteger) count;
+
+-(NSInteger) rowForCheckIn: (CheckIn*) checkIn;
+
+-(void) addCheckIn:(CheckIn*) checkIn;
 
 @end

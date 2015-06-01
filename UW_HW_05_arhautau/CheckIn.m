@@ -17,7 +17,8 @@
 
 + (instancetype) createCheckInWithMapAnnotation: (MapAnnotation*) mapAnnotation {
     CheckIn *checkIn = [[CheckIn alloc] init];
-    checkIn.photos = [[NSMutableArray alloc] init];
+    [checkIn setPhotos: [[NSMutableArray alloc] init]];
+    [checkIn setName: mapAnnotation.title];
     return checkIn;
 }
 
@@ -28,6 +29,7 @@
 -(void) encodeWithCoder:(NSCoder *)aCoder {
     
     [aCoder encodeObject: self.photos forKey:@"photoCollection"];
+    [aCoder encodeObject: self.name forKey:@"name"];
 }
 
 -(instancetype)initWithCoder:(NSCoder *)aDecoder {
@@ -35,9 +37,12 @@
     
     
     if (self) {
-        NSMutableArray *photos = [aDecoder decodeObjectOfClass: [NSMutableArray class] forKey:@"photoCollection"];
+        NSArray *photos = [aDecoder decodeObjectOfClass: [NSMutableArray class] forKey:@"photoCollection"];
+        NSMutableArray *mutablePhotos = [NSMutableArray arrayWithArray: photos];
         
-        [self setPhotos: photos];
+        NSString *name = [aDecoder decodeObjectOfClass: [NSString class] forKey:@"name"];
+        [self setPhotos: mutablePhotos];
+        [self setName: name];
     }
     return self;
 }

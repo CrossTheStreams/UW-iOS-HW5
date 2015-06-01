@@ -9,24 +9,38 @@
 #import "CheckInListController.h"
 #import "CheckInCell.h"
 #import "MapController.h"
+#import "CheckInCollection.h"
+#import "CheckIn.h"
+#import "PhotosListViewController.h"
 
 @interface CheckInListController ()
 
 @end
 
-@implementation CheckInListController
+@implementation CheckInListController {
+
+    CheckInCollection * _collection;
+    
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self.tableView setDelegate:self];
+    [self.tableView setDataSource:self];
+    
+    
     // Apparently, I had to do this in order to use a xib file?
     [self.tableView registerNib:[UINib nibWithNibName:@"CheckInCell" bundle:nil] forCellReuseIdentifier:@"CheckInCell"];
 
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
     
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    // register acrhiveCollection notification
+    [[NSNotificationCenter defaultCenter] addObserver: self selector: @selector(archiveCheckInCollection) name:@"archiveCollection" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserverForName:@"addCheckIn" object: nil queue:nil usingBlock:^(NSNotification *note) {
+        
+        
+        [self addCheckIn: [note.userInfo objectForKey:@"CheckIn"]];
+    }];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -37,31 +51,99 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 1;
+    
+    return [[self checkInCollection] count];
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    
+
     CheckInCell *cell = [tableView dequeueReusableCellWithIdentifier: @"CheckInCell" forIndexPath:indexPath];
-    [cell.checkInLabel setText:@"foo bar"];
+    CheckIn *checkIn = [[self checkInCollection] checkInForRow: [indexPath row]];
+    [cell.checkInLabel setText: [checkIn name]];
 
     return cell;
 }
-- (IBAction)addCheckInButtonTapped:(id)sender {
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    MapController *mapVC = [storyboard instantiateViewControllerWithIdentifier:@"MapController"];
-    [[self navigationController] pushViewController: mapVC animated:YES];
+
+
+#pragma mark checkInCollection
+
+-(CheckInCollection*) checkInCollection {
+    if (![_collection isKindOfClass: [CheckInCollection class]]) {
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        // Get the docs directory
+        NSString *documentsPath = [paths objectAtIndex:0];
+        // Add the file name
+        NSString *collectionPath = [documentsPath stringByAppendingPathComponent: @"CheckInCollection"];
+
+        CheckInCollection * collection = [NSKeyedUnarchiver unarchiveObjectWithFile: collectionPath];
+
+        if (collection) {
+            _collection = collection;
+        } else {
+            _collection = [CheckInCollection createCheckInCollection];
+            [self archiveCheckInCollection];
+        }
+    }
+    return _collection;
 }
+
+# pragma mark archiveCheckInCollection
+
+-(void) archiveCheckInCollection {
+    NSLog(@"collection archived");
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsPath = [paths objectAtIndex:0];
+    NSString *collectionPath = [documentsPath stringByAppendingPathComponent: @"CheckInCollection"];
+    [NSKeyedArchiver archiveRootObject: [self checkInCollection] toFile: collectionPath];
+}
+
+-(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+
+    CheckIn *checkIn = [[self checkInCollection] checkInForRow: [indexPath row]];
+    PhotosListViewController *photosVC = [PhotosListViewController createPhotosListViewControllerWithCheckIn: checkIn];
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
+    UINavigationController *photosNav = [storyboard instantiateViewControllerWithIdentifier: @"PhotosListViewControllerNav"];
+    
+    [photosNav setViewControllers: @[photosVC]];
+    
+    [[self navigationController] presentViewController: photosNav animated:YES completion: nil];
+
+}
+
+- (IBAction)presentMapController:(id)sender {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
+    UINavigationController *nav = [storyboard instantiateViewControllerWithIdentifier:@"MapControllerNav"];
+    MapController *mapVC = [storyboard instantiateViewControllerWithIdentifier:@"MapController"];
+    [nav setViewControllers:@[mapVC]];
+    [[self navigationController] presentViewController:nav animated:YES completion:^{
+        //
+    }];
+}
+
+-(void) addCheckIn: (CheckIn*) checkIn {
+    
+    CheckInCollection *collection = [self checkInCollection];
+    [collection addCheckIn: checkIn];
+
+    // insert row
+    NSUInteger row = [collection rowForCheckIn: checkIn];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow: row inSection: 0];
+    
+    [self.tableView insertRowsAtIndexPaths: @[indexPath] withRowAnimation: UITableViewRowAnimationAutomatic];
+}
+
+-(void) removeCheckIn: (CheckIn*) checkIn {
+    // TODO: implement
+}
+
 
 
 /*

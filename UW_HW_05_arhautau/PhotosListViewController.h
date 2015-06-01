@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CheckIn.h"
 
 @interface PhotosListViewController : UICollectionViewController
+
++ (instancetype) createPhotosListViewControllerWithCheckIn: (CheckIn*) checkIn;
 
 @end

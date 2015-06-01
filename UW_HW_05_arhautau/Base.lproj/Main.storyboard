@@ -7,7 +7,7 @@
         <!--Photos List View Controller-->
         <scene sceneID="CQX-31-Tyg">
             <objects>
-                <collectionViewController id="w5f-2t-y0c" customClass="PhotosListViewController" sceneMemberID="viewController">
+                <collectionViewController storyboardIdentifier="PhotosListViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="w5f-2t-y0c" customClass="PhotosListViewController" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="mDE-bl-8Da">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -35,6 +35,11 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" id="lGh-fg-vEG">
+                        <barButtonItem key="leftBarButtonItem" systemItem="done" id="b0a-Ir-XnC">
+                            <connections>
+                                <action selector="doneAddingPhotos:" destination="w5f-2t-y0c" id="5OR-aH-PHM"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="camera" id="bRN-Ph-SdI">
                             <connections>
                                 <action selector="tappedCameraButton:" destination="w5f-2t-y0c" id="4Ug-XY-det"/>
@@ -70,7 +75,7 @@
                     <navigationItem key="navigationItem" title="Check-Ins" id="SmY-q0-KPj">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="0nH-sh-xw7">
                             <connections>
-                                <segue destination="qBf-wZ-uPt" kind="show" id="0jn-Yr-5oo"/>
+                                <segue destination="DyL-S3-ttE" kind="show" id="Jfg-aE-CCA"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -79,7 +84,7 @@
             </objects>
             <point key="canvasLocation" x="-15" y="-372"/>
         </scene>
-        <!--Root View Controller-->
+        <!--Find Location-->
         <scene sceneID="it9-qJ-W3x">
             <objects>
                 <tableViewController storyboardIdentifier="MapController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="DyL-S3-ttE" customClass="MapController" sceneMemberID="viewController">
@@ -107,7 +112,7 @@
                             <outlet property="delegate" destination="DyL-S3-ttE" id="Fhc-dW-YIw"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="eue-vZ-ssu"/>
+                    <navigationItem key="navigationItem" title="Find Location" id="eue-vZ-ssu"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PKh-uP-dbp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -116,7 +121,7 @@
         <!--Navigation Controller-->
         <scene sceneID="goL-Z3-OuP">
             <objects>
-                <navigationController id="qBf-wZ-uPt" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="MapControllerNav" useStoryboardIdentifierAsRestorationIdentifier="YES" id="qBf-wZ-uPt" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="lPa-ek-7cA">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -148,7 +153,7 @@
         <!--Navigation Controller-->
         <scene sceneID="OOW-Kb-NKx">
             <objects>
-                <navigationController storyboardIdentifier="NavController" id="6AS-j9-y44" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="PhotosListViewControllerNav" useStoryboardIdentifierAsRestorationIdentifier="YES" id="6AS-j9-y44" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="63f-iI-gqN">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -162,4 +167,7 @@
             <point key="canvasLocation" x="-831" y="326"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="Jfg-aE-CCA"/>
+    </inferredMetricsTieBreakers>
 </document>

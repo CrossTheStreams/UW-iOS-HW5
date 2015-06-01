@@ -13,6 +13,10 @@
 
 @property (strong, nonatomic) NSMutableArray *photos;
 
+@property (strong, nonatomic) NSString *name;
+
+// TODO: add property to reference coordinates of added check-ins later
+
 + (instancetype) createCheckInWithMapAnnotation: (MapAnnotation*) mapAnnotation ;
 
 
