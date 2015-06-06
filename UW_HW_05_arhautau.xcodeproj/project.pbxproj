@@ -31,6 +31,7 @@
 		F974A5291B16DE0300E2C27F /* MapViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F974A5271B16DE0300E2C27F /* MapViewCell.m */; };
 		F974A52A1B16DE0300E2C27F /* MapViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F974A5281B16DE0300E2C27F /* MapViewCell.xib */; };
 		F974A52D1B16F9EC00E2C27F /* CustomAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = F974A52C1B16F9EC00E2C27F /* CustomAnnotation.m */; };
+		F9792EC01B23838E001AF4C9 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F9792EBF1B23838E001AF4C9 /* Settings.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +85,7 @@
 		F974A5281B16DE0300E2C27F /* MapViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MapViewCell.xib; sourceTree = "<group>"; };
 		F974A52B1B16F9EC00E2C27F /* CustomAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomAnnotation.h; sourceTree = "<group>"; };
 		F974A52C1B16F9EC00E2C27F /* CustomAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomAnnotation.m; sourceTree = "<group>"; };
+		F9792EBF1B23838E001AF4C9 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +131,7 @@
 		F94801B81B01A2E500F30953 /* UW_HW_05_arhautau */ = {
 			isa = PBXGroup;
 			children = (
+				F9792EBF1B23838E001AF4C9 /* Settings.bundle */,
 				49F0EF1C1B184F67001DE165 /* MapAnnotation.h */,
 				49F0EF1D1B184F67001DE165 /* MapAnnotation.m */,
 				F974A5151B15A41F00E2C27F /* CheckInCell.h */,
@@ -279,6 +282,7 @@
 				F974A5191B15A41F00E2C27F /* CheckInCell.xib in Resources */,
 				F94801C71B01A2E500F30953 /* Images.xcassets in Resources */,
 				F948020E1B01DE0A00F30953 /* PhotoCell.xib in Resources */,
+				F9792EC01B23838E001AF4C9 /* Settings.bundle in Resources */,
 				F974A5251B16DDF300E2C27F /* SearchBarCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

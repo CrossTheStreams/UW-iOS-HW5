@@ -17,6 +17,15 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    // synchronize with Settings.app settings
+    [[NSNotificationCenter defaultCenter] addObserverForName: NSUserDefaultsDidChangeNotification
+                                                      object: [NSUserDefaults standardUserDefaults]
+                                                       queue: [NSOperationQueue mainQueue]
+                                                  usingBlock:^(NSNotification *note) {
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }];
+    
     return YES;
 }
 

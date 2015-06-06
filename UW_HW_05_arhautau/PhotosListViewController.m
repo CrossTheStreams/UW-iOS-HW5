@@ -9,6 +9,7 @@
 #import "PhotosListViewController.h"
 #import "PhotoCell.h"
 #import "CheckIn.h"
+#import <UIKit/UIKit.h>
 
 @interface PhotosListViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UIImagePickerControllerDelegate>
 
@@ -40,7 +41,9 @@
 - (UICollectionViewCell*) collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     static NSString *cellID= @"PhotoCell";
+    
     PhotoCell *cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:cellID forIndexPath: indexPath];
+    
     if (cell == nil) {
         NSArray *nibObjects = [[NSBundle mainBundle] loadNibNamed:cellID owner:self options:nil];
         cell = (PhotoCell *) [nibObjects firstObject];
@@ -178,17 +181,6 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info {
     
     NSArray *directoryContent = [[NSFileManager defaultManager] directoryContentsAtPath: documentsPath];
     
-    NSLog(@"%@", directoryContent);
-    //delete all files in documents folder
-    //    for (NSString *path in directoryContent) {
-    //        NSError *error;
-    //        NSString *fullPath = [[documentsPath stringByAppendingString: @"/"] stringByAppendingString: path];
-    //        BOOL success = [[NSFileManager defaultManager] removeItemAtPath: fullPath error: &error];
-    //        if (!success) {
-    //            NSLog(@"%@",error);
-    //        }
-    //    }
-    //
     
     // Write the file
     BOOL success = [pngData writeToFile: filePath atomically:YES];
@@ -207,6 +199,15 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info {
         } completion: nil];
         
     }];
+    
+    // If the user has opted to save images in Settings.app, save the image to the Camera Roll album
+    if (picker.sourceType == UIImagePickerControllerSourceTypeCamera) {
+        
+        if ([[[NSUserDefaults standardUserDefaults] stringForKey:@"save_images"] isEqualToString:@"1"]) {
+            UIImageWriteToSavedPhotosAlbum(originalImage, nil, nil, nil);
+        }
+        
+    }
 
     
 }
