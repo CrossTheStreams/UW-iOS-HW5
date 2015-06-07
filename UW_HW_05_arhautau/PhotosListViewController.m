@@ -91,7 +91,9 @@
                                                             preferredStyle:UIAlertControllerStyleActionSheet];
     
     if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
-        UIAlertAction* cameraAction = [UIAlertAction actionWithTitle:@"Camera" style: UIAlertActionStyleDefault
+        
+        NSString *title = NSLocalizedString(@"camera_title",@"camera_title");
+        UIAlertAction* cameraAction = [UIAlertAction actionWithTitle: title style: UIAlertActionStyleDefault
                                                             handler:^(UIAlertAction *action) {
                                                             
                                                                 [self presentCamera];
@@ -100,7 +102,8 @@
     }
     
     if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary]) {
-        UIAlertAction* photoLibraryAction = [UIAlertAction actionWithTitle:@"Photo Library" style:UIAlertActionStyleDefault
+        NSString *title = NSLocalizedString(@"photo_library_title",@"photo_library_title");
+        UIAlertAction* photoLibraryAction = [UIAlertAction actionWithTitle: title style:UIAlertActionStyleDefault
                                                              handler:^(UIAlertAction *action) {
                                                                  
                                                                  [self presentPhotoLibrary];
@@ -181,10 +184,8 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info {
     
     NSArray *directoryContent = [[NSFileManager defaultManager] directoryContentsAtPath: documentsPath];
     
-    
     // Write the file
     BOOL success = [pngData writeToFile: filePath atomically:YES];
-    
     
     [[[self checkIn] photos] addObject: fileName];
     

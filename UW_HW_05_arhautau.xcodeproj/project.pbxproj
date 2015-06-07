@@ -32,6 +32,7 @@
 		F974A52A1B16DE0300E2C27F /* MapViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F974A5281B16DE0300E2C27F /* MapViewCell.xib */; };
 		F974A52D1B16F9EC00E2C27F /* CustomAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = F974A52C1B16F9EC00E2C27F /* CustomAnnotation.m */; };
 		F9792EC01B23838E001AF4C9 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F9792EBF1B23838E001AF4C9 /* Settings.bundle */; };
+		F9792ECD1B24DBAA001AF4C9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F9792ECB1B24DBAA001AF4C9 /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,6 +87,11 @@
 		F974A52B1B16F9EC00E2C27F /* CustomAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomAnnotation.h; sourceTree = "<group>"; };
 		F974A52C1B16F9EC00E2C27F /* CustomAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomAnnotation.m; sourceTree = "<group>"; };
 		F9792EBF1B23838E001AF4C9 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		F9792EC51B23AAC8001AF4C9 /* nb */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nb; path = nb.lproj/Main.strings; sourceTree = "<group>"; };
+		F9792EC61B23AAC8001AF4C9 /* nb */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nb; path = nb.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		F9792EC81B23AB59001AF4C9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
+		F9792ECC1B24DBAA001AF4C9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		F9792ECE1B24DD45001AF4C9 /* nb */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nb; path = nb.lproj/Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +137,7 @@
 		F94801B81B01A2E500F30953 /* UW_HW_05_arhautau */ = {
 			isa = PBXGroup;
 			children = (
+				F9792ECB1B24DBAA001AF4C9 /* Localizable.strings */,
 				F9792EBF1B23838E001AF4C9 /* Settings.bundle */,
 				49F0EF1C1B184F67001DE165 /* MapAnnotation.h */,
 				49F0EF1D1B184F67001DE165 /* MapAnnotation.m */,
@@ -258,6 +265,7 @@
 			knownRegions = (
 				en,
 				Base,
+				nb,
 			);
 			mainGroup = F94801AD1B01A2E500F30953;
 			productRefGroup = F94801B71B01A2E500F30953 /* Products */;
@@ -280,6 +288,7 @@
 				F94801CA1B01A2E500F30953 /* LaunchScreen.xib in Resources */,
 				F94801F21B01D7E800F30953 /* mario.jpg in Resources */,
 				F974A5191B15A41F00E2C27F /* CheckInCell.xib in Resources */,
+				F9792ECD1B24DBAA001AF4C9 /* Localizable.strings in Resources */,
 				F94801C71B01A2E500F30953 /* Images.xcassets in Resources */,
 				F948020E1B01DE0A00F30953 /* PhotoCell.xib in Resources */,
 				F9792EC01B23838E001AF4C9 /* Settings.bundle in Resources */,
@@ -340,6 +349,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				F94801C41B01A2E500F30953 /* Base */,
+				F9792EC51B23AAC8001AF4C9 /* nb */,
+				F9792EC81B23AB59001AF4C9 /* en */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -348,8 +359,18 @@
 			isa = PBXVariantGroup;
 			children = (
 				F94801C91B01A2E500F30953 /* Base */,
+				F9792EC61B23AAC8001AF4C9 /* nb */,
 			);
 			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+		F9792ECB1B24DBAA001AF4C9 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F9792ECC1B24DBAA001AF4C9 /* en */,
+				F9792ECE1B24DD45001AF4C9 /* nb */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
